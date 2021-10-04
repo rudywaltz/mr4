@@ -19,5 +19,8 @@
     "prettier-plugin-svelte": "^2.4.0",
     "svelte": "3.43.1"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": "14.17.1"
+  }
 }
