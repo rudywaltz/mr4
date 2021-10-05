@@ -37,6 +37,7 @@
 
 <script>
   import Episode from '$lib/Episode.svelte'
+  import Header from '$lib/Header.svelte'
   export let podcast
   export let searchTerm = ''
 
@@ -74,17 +75,59 @@
 	<title>Home</title>
 </svelte:head>
 
-<section>
-  <a href="../musorok"> &#8592; Műsorok</a>
+<!-- <Header /> -->
 
-  <h3>Keresés</h3>
-  <input type="text" value="{searchTerm}" on:keyup={({ target: { value } }) => debounce(value)}>
-  <aside>
-    Találatok: {filteredEpisodes.length}
-  </aside>
-  <h1>{podcast.title}</h1>
-  <p><em>{podcast.description}</em></p>
+<section class="podcast">
+  <img src="{podcast.logoUrl}" alt="{podcast.title}" width="200px" height="200px" class="podcast__image">
+  <div class="podcast__content">
+    <h1 class="podcast__title">{podcast.title}</h1>
+    <p class="podcast__description">{podcast.description}</p>
+  </div>
+</section>
+<section  class="page">
+  <!-- <a href="../musorok"> &#8592; Műsorok</a> -->
+<!--
+  <form class="searchForm">
+    <label for="searchInput">Keresés</label>
+    <input type="text" id="searchInput" value="{searchTerm}" on:keyup={({ target: { value } }) => debounce(value)}>
+    <aside>
+      Találatok: {filteredEpisodes.length}
+    </aside>
+  </form> -->
   {#each filteredEpisodes as episode}
   <Episode {...episode} />
   {/each}
 </section>
+
+<style lang="scss">
+  .page {
+    padding: 0 1rem;
+    background: #efefef;
+  }
+
+  .searchForm {
+    margin-bottom: 1rem;
+  }
+
+  .podcast {
+    background-color: #2e2e2e;
+    display: flex;
+    margin-bottom: 1rem;
+
+    &__content {
+      color: #fff;
+      padding: 1rem;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    }
+
+    &__title {
+      margin: 0 0 1rem;
+    }
+    &__description {
+      margin: 0;
+    }
+
+  }
+
+</style>
