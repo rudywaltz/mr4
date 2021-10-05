@@ -3,6 +3,7 @@
    * @type {import('@sveltejs/kit').Load}
    */
 
+  export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
   export async function load({ page, fetch, session, context }) {
     const {
       params: {
@@ -19,7 +20,7 @@
       return {}
     }
 
-    const response = await fetch(`https://mr4-radio-api.herokuapp.com/feed?q=${podcastMap[slug]}`,{ headers: {
+    const response = await fetch(`${API_ENDPOINT}/feed?q=${podcastMap[slug]}`,{ headers: {
         "Content-Type": "application/json"
       }});
     if (response.ok) {
