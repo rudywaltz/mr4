@@ -98,36 +98,3 @@
   <Episode {...episode} />
   {/each}
 </section>
-
-<style lang="scss">
-  .page {
-    padding: 0 1rem;
-    background: #efefef;
-  }
-
-  .searchForm {
-    margin-bottom: 1rem;
-  }
-
-  .podcast {
-    background-color: #2e2e2e;
-    display: flex;
-    margin-bottom: 1rem;
-
-    &__content {
-      color: #fff;
-      padding: 1rem;
-      font-size: 1.2rem;
-      line-height: 1.5rem;
-    }
-
-    &__title {
-      margin: 0 0 1rem;
-    }
-    &__description {
-      margin: 0;
-    }
-
-  }
-
-</style>
