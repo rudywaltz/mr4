@@ -279,3 +279,31 @@ details {
 summary {
   display: list-item;
 }
+
+
+
+/* temporary style */
+.page {
+  padding: 0 1rem;
+  background: #efefef;
+}
+
+.podcast {
+  background-color: #2e2e2e;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.podcast__content {
+    color: #fff;
+    padding: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  .podcast__title {
+    margin: 0 0 1rem;
+  }
+  .podcast__description {
+    margin: 0;
+  }

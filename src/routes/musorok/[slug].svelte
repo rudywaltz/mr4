@@ -75,7 +75,7 @@
 	<title>Home</title>
 </svelte:head>
 
-<!-- <Header /> -->
+<Header />
 
 <section class="podcast">
   <img src="{podcast.logoUrl}" alt="{podcast.title}" width="200px" height="200px" class="podcast__image">
