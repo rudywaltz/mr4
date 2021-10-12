@@ -284,14 +284,13 @@ summary {
 
 /* temporary style */
 .page {
-  padding: 0 1rem;
+  padding: 1rem;
   background: #efefef;
 }
 
 .podcast {
   background-color: #2e2e2e;
   display: flex;
-  margin-bottom: 1rem;
 }
 
 .podcast__content {
@@ -306,4 +305,10 @@ summary {
   }
   .podcast__description {
     margin: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    .podcast {
+      display: block;
+    }
   }

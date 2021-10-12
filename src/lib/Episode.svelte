@@ -32,12 +32,12 @@ export function format(time) {
 <style lang="scss">
   .episode {
     background-color: #666;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 200px;
     margin-bottom: 1rem;
 
     &__content {
       padding: 1rem;
-      flex-grow: 1;
     }
 
     &__title,
@@ -47,6 +47,12 @@ export function format(time) {
 
     &__cover {
       margin: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .episode {
+      display: block;
     }
   }
 </style>

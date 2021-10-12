@@ -75,8 +75,6 @@
 	<title>Home</title>
 </svelte:head>
 
-<Header />
-
 <section class="podcast">
   <img src="{podcast.logoUrl}" alt="{podcast.title}" width="200px" height="200px" class="podcast__image">
   <div class="podcast__content">
@@ -86,14 +84,14 @@
 </section>
 <section  class="page">
   <!-- <a href="../musorok"> &#8592; Műsorok</a> -->
-<!--
+
   <form class="searchForm">
     <label for="searchInput">Keresés</label>
     <input type="text" id="searchInput" value="{searchTerm}" on:keyup={({ target: { value } }) => debounce(value)}>
     <aside>
       Találatok: {filteredEpisodes.length}
     </aside>
-  </form> -->
+  </form>
   {#each filteredEpisodes as episode}
   <Episode {...episode} />
   {/each}
