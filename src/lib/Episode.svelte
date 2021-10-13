@@ -33,7 +33,7 @@ export function format(time) {
   .episode {
     background-color: #666;
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 1fr 200px;
     margin-bottom: 1rem;
 
     &__content {
@@ -57,7 +57,7 @@ export function format(time) {
 
       &__cover {
         width: 100%;
-      height: auto;
+        height: auto;
       }
     }
   }
