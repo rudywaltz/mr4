@@ -26,9 +26,12 @@
     if (response.ok) {
       const podcastFeed = await response.text()
       let podcastJSON = JSON.parse(podcastFeed)[0]
+      poscastJSON.logoUrl = poscastJSON.logoUrl?.startsWith('http://') ?
+        `${API_ENDPOINT}/image?url=${poscastJSON.logoUrl}`:
+        poscastJSON.logoUrl
+
       podcastJSON.shows = podcastJSON.shows.map(show => {
         show.image = show.image?.startsWith('http://') ? `${API_ENDPOINT}/image?url=${show.image}`: show.image
-
         return show
       })
 
