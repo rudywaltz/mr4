@@ -25,9 +25,16 @@
       }});
     if (response.ok) {
       const podcastFeed = await response.text()
+      let podcastJSON = JSON.parse(podcastFeed)[0]
+      podcastJSON.shows = podcastJSON.shows.map(show => {
+        show.image = show.image?.startsWith('http://') ? `${API_ENDPOINT}/image?url=${show.image}`: show.image
+
+        return show
+      })
+
       return {
         props: {
-          podcast: JSON.parse(podcastFeed)[0],
+          podcast: podcastJSON,
           searchTerm: page.query.get('q') || ''
         }
       };
