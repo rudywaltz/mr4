@@ -33,10 +33,11 @@ export function format(time) {
   .episode {
     background-color: #666;
     display: grid;
-    grid-template-columns: auto 200px;
+    grid-template-columns: 200px auto;
     margin-bottom: 1rem;
 
     &__content {
+      overflow-wrap: break-word;
       padding: 1rem;
     }
 
@@ -46,13 +47,18 @@ export function format(time) {
     }
 
     &__cover {
-      margin: 1rem;
+      place-self: center;
     }
   }
 
   @media screen and (max-width: 500px) {
     .episode {
       display: block;
+
+      &__cover {
+        width: 100%;
+      height: auto;
+      }
     }
   }
 </style>
