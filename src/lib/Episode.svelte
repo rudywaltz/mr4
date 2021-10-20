@@ -1,5 +1,5 @@
 <script>
-  export let title, subtitle, description, duration, image, url, publishDate
+  export let title, subtitle, description, duration, image, url, publishDate, slug
   function pad(num) {
   return String(num).padStart(2, '0');
 }
@@ -13,7 +13,11 @@ export function format(time) {
   return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
 
-
+const slugMatcher = {
+  gombapresszo: "Gombapresszó",
+  mindenkiboldog: "Vendeglő A Világ Végén",
+  spagettilakoauto: "Sapegetti Lakóautó"
+}
 </script>
 
 <section class="episode">
@@ -21,6 +25,7 @@ export function format(time) {
     <datetime>{new Date(publishDate).toLocaleDateString('hu-HU', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</datetime>
     <h2 class="episode__title">{title}</h2>
     {#if subtitle}<h3 class="episode__subtitle">{subtitle}</h3> {/if}
+    <a href="/musorok/{slug}"><strong>{slugMatcher[slug]}</strong></a>
     <div class="episode__duration">{format(duration)}</div>
     <section class="episode__descriptions">{@html description}</section>
     <a href={url}>{title}</a>

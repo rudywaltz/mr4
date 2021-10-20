@@ -1,9 +1,13 @@
 <script>
 	import { page } from '$app/stores';
-
 </script>
 
 <nav>
+  <a
+  href="/"
+  class:active={$page.path === '/'}
+  sveltekit:prefetch
+>All</a>
   <a
     href="/musorok/gombapresszo"
     class:active={$page.path === '/musorok/gombapresszo'}

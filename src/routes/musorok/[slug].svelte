@@ -2,83 +2,42 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-
+   import createJSON from '$lib/createEpisodesJson'
+   import {PODCAST_MAP} from '$lib/podcastMap'
   export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
-  export async function load({ page, fetch, session, context }) {
+  export async function load({ page, fetch }) {
     const {
       params: {
         slug
       }
     } = page
-    const podcastMap = {
-      gombapresszo: 'https://feeds.feedburner.com/gombapresszo',
-      mindenkiboldog: 'https://anchor.fm/s/1a6213c0/podcast/rss',
-      spagettilakoauto: 'https://anchor.fm/s/d180c9c/podcast/rss'
-    }
 
-    if (!podcastMap.hasOwnProperty(slug)) {
+    if (!Object.hasOwnProperty.call(PODCAST_MAP, slug)) {
       return {}
     }
 
-    const response = await fetch(`${API_ENDPOINT}/feed?q=${podcastMap[slug]}`,{ headers: {
+    const response = await fetch(`${API_ENDPOINT}/feed?q=${PODCAST_MAP[slug].url}`,{ headers: {
         "Content-Type": "application/json"
       }});
-    if (response.ok) {
-      const podcastFeed = await response.text()
-      let podcastJSON = JSON.parse(podcastFeed)[0]
-      podcastJSON.logoUrl = podcastJSON.logoUrl?.startsWith('http://') ?
-        `${API_ENDPOINT}/image?url=${podcastJSON.logoUrl}`:
-        podcastJSON.logoUrl
-
-      podcastJSON.shows = podcastJSON.shows.map(show => {
-        show.image = show.image?.startsWith('http://') ? `${API_ENDPOINT}/image?url=${show.image}`: show.image
-        return show
-      })
 
       return {
         props: {
-          podcast: podcastJSON,
+          podcast: await createJSON(response, slug),
           searchTerm: page.query.get('q') || ''
         }
       };
-    }
   }
 </script>
 
 <script>
   import Episode from '$lib/Episode.svelte'
-  import Header from '$lib/Header.svelte'
+  import Search from '$lib/Search.svelte'
+  import episodeFilter from '$lib/episodeFilter'
   export let podcast
   export let searchTerm = ''
 
   $: filteredEpisodes = podcast.shows
-
-	let timer;
-
-	const debounce = value => {
-		clearTimeout(timer);
-		timer = setTimeout(() => {
-			searchTerm = value;
-		}, 750);
-	}
-  $: filteredEpisodes =  filterEpisode(searchTerm)
-
-  function  filterEpisode(searchTerm2) {
-    const filtered = podcast.shows.filter(episode => {
-      return normailezeString(JSON.stringify(episode)).includes(searchTerm2)
-    })
-
-    return filtered
-  }
-
-  function normailezeString(str) {
-  return str.length
-    ? str
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-    : str;
-}
+  $: filteredEpisodes =  episodeFilter(podcast.shows, searchTerm)
 
 </script>
 <svelte:head>
@@ -93,15 +52,9 @@
   </div>
 </section>
 <section  class="page">
+  <Search searchTerm="{searchTerm}" on:searchTerm="{({ detail }) => searchTerm = detail }" />
   <!-- <a href="../musorok"> &#8592; Műsorok</a> -->
 
-  <form class="searchForm">
-    <label for="searchInput">Keresés</label>
-    <input type="text" id="searchInput" value="{searchTerm}" on:keyup={({ target: { value } }) => debounce(value)}>
-    <aside>
-      Találatok: {filteredEpisodes.length}
-    </aside>
-  </form>
   {#each filteredEpisodes as episode}
   <Episode {...episode} />
   {/each}
