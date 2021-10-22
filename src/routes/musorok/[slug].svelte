@@ -45,7 +45,7 @@
 </svelte:head>
 
 <section class="podcast">
-  <img src="{podcast.logoUrl}" alt="{podcast.title}" width="200px" height="200px" class="podcast__image">
+  <img src="{podcast.logoUrl}" alt="{podcast.title}" width="200" height="200" class="podcast__image">
   <div class="podcast__content">
     <h1 class="podcast__title">{podcast.title}</h1>
     <p class="podcast__description">{podcast.description}</p>

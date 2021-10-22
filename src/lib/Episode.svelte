@@ -30,7 +30,7 @@ const slugMatcher = {
     <section class="episode__descriptions">{@html description}</section>
     <a href={url}>{title}</a>
   </div>
-  {#if image} <img src="{image}" alt="{title}" class="episode__cover" loading=lazy width="150" height="150px"> {/if}
+  {#if image} <img src="{image}" alt="{title}" class="episode__cover" loading=lazy width="150" height="150"> {/if}
 </section>
 
 

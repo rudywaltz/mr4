@@ -1,7 +1,7 @@
 export const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT;
 
 function imageURLFix(imageURL) {
-  return imageURL?.startsWith('http://') ? `${API_ENDPOINT}/image?url=${imageURL}` : imageURL;
+  return `//images.weserv.nl/?url=${imageURL}&w=300&h=300`;
 }
 
 export default async function createJSON(podcast, slug) {
