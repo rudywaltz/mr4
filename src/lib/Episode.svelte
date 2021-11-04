@@ -21,24 +21,27 @@ const slugMatcher = {
 </script>
 
 <section class="episode">
+  {#if image} <img src="{image}" alt="{title}" class="episode__cover" loading=lazy width="150" height="150"> {/if}
   <div class="episode__content">
-    <datetime>{new Date(publishDate).toLocaleDateString('hu-HU', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</datetime>
     <h2 class="episode__title">{title}</h2>
     {#if subtitle}<h3 class="episode__subtitle">{subtitle}</h3> {/if}
-    <a href="/musorok/{slug}"><strong>{slugMatcher[slug]}</strong></a>
-    <div class="episode__duration">{format(duration)}</div>
+    <datetime>{new Date(publishDate).toLocaleDateString('hu-HU', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</datetime>
+    &nbsp;|&nbsp;
+    <span class="episode__duration">{format(duration)}</span>
+    <div>
+      <a href="/musorok/{slug}"><strong>{slugMatcher[slug]}</strong></a>
+    </div>
     <section class="episode__descriptions">{@html description}</section>
     <a href={url}>{title}</a>
   </div>
-  {#if image} <img src="{image}" alt="{title}" class="episode__cover" loading=lazy width="150" height="150"> {/if}
 </section>
 
 
 <style lang="scss">
   .episode {
-    background-color: #666;
+    background-color: #bbbb;
     display: grid;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 150px 1fr;
     margin-bottom: 1rem;
 
     &__content {
@@ -53,16 +56,26 @@ const slugMatcher = {
 
     &__cover {
       place-self: center;
+      /* margin: -1rem -1rem 0 -1rem; */
     }
   }
 
   @media screen and (max-width: 500px) {
     .episode {
       display: block;
+      font-size: 0;
 
       &__cover {
-        width: 100%;
         height: auto;
+        width: 100%;
+      }
+
+      &__content {
+        background: rgba(#bbb, .9);
+        font-size: 1rem;
+        margin-top: -15rem;
+        min-height: 13rem;
+        position: relative;
       }
     }
   }
