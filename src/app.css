@@ -282,19 +282,24 @@ summary {
 
 
 
+
 /* temporary style */
+
+body {
+  background: #a0d6c3;
+  font-family: 'Source Serif Pro', serif;
+}
+
 .page {
   /* padding: 1rem; */
-  background: #efefef;
 }
 
 .podcast {
-  background-color: #2e2e2e;
+  /* background-color: #2e2e2e; */
   display: flex;
 }
 
 .podcast__content {
-    color: #fff;
     padding: 1rem;
     font-size: 1.2rem;
     line-height: 1.5rem;

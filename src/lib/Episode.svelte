@@ -39,14 +39,16 @@ const slugMatcher = {
 
 <style lang="scss">
   .episode {
-    background-color: #bbbb;
+    /* background-color: #bbbb; */
+    border-bottom: 1px solid #55c4c2;
     display: grid;
     grid-template-columns: 150px 1fr;
     margin-bottom: 1rem;
+    padding: 0 1rem 1rem;
 
     &__content {
       overflow-wrap: break-word;
-      padding: 1rem;
+      padding: 0 1rem;
     }
 
     &__title,
@@ -55,7 +57,7 @@ const slugMatcher = {
     }
 
     &__cover {
-      place-self: center;
+      place-self: top;
       /* margin: -1rem -1rem 0 -1rem; */
     }
   }

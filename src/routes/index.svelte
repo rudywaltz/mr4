@@ -37,6 +37,7 @@
   export let podcast, searchTerm
   import Episode from '$lib/Episode.svelte'
   import Search from '$lib/Search.svelte'
+  import LazyLoad from '$lib/LazyLoad.svelte'
   import episodeFilter from '$lib/episodeFilter'
 
     const {
@@ -61,7 +62,8 @@
 <section  class="page">
   <Search searchTerm="{searchTerm}" on:searchTerm="{({ detail }) => searchTerm = detail }" />
 
-  {#each filteredEpisodes as episode}
+  <LazyLoad data="{filteredEpisodes}" page="0" on:nextPage="{console.log}"/>
+  <!-- {#each filteredEpisodes as episode}
   <Episode {...episode} />
-  {/each}
+  {/each} -->
 </section>
