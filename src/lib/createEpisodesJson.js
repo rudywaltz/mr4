@@ -17,5 +17,6 @@ export default async function createJSON(podcast, slug) {
     show.slug = slug;
     return show;
   });
+
   return podcastJSON;
 }

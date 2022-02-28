@@ -62,8 +62,7 @@
 <section  class="page">
   <Search searchTerm="{searchTerm}" on:searchTerm="{({ detail }) => searchTerm = detail }" />
 
-  <LazyLoad data="{filteredEpisodes}" page="0" on:nextPage="{console.log}"/>
-  <!-- {#each filteredEpisodes as episode}
-  <Episode {...episode} />
-  {/each} -->
+  {#each filteredEpisodes as episode}
+    <Episode {...episode} />
+  {/each}
 </section>

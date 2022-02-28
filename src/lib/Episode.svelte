@@ -6,12 +6,14 @@
 
 
 export function format(time) {
-  if (isNaN(time)) return '--:--:--';
+  if (isNaN(time)) return time;
   const hours = Math.floor(time / (60 * 60));
   const minutes = Math.floor((time / 60) % 60);
   const seconds = Math.ceil(time % 60);
   return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
+
+import ImageLoader from '$lib/image/ImageLoader.svelte'
 
 const slugMatcher = {
   gombapresszo: "Gombapresszó",
@@ -21,7 +23,11 @@ const slugMatcher = {
 </script>
 
 <section class="episode">
-  {#if image} <img src="{image}" alt="{title}" class="episode__cover" loading=lazy width="150" height="150"> {/if}
+  {#if image}
+  <div class="episode__cover" width="150" height="150">
+    <ImageLoader src="{image}" alt="{title}"></ImageLoader>
+  </div>
+  {/if}
   <div class="episode__content">
     <h2 class="episode__title">{title}</h2>
     {#if subtitle}<h3 class="episode__subtitle">{subtitle}</h3> {/if}
