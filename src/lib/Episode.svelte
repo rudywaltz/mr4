@@ -13,7 +13,7 @@ export function format(time) {
   return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
 
-import ImageLoader from '$lib/Image/ImageLoader.svelte'
+import ImageLoader from '$lib/image/ImageLoader.svelte'
 
 const slugMatcher = {
   gombapresszo: "Gombapresszó",
