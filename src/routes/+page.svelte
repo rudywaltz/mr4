@@ -1,11 +1,11 @@
 <script>
   import { podcast } from '$lib/store';
   import Show from '../components/show.svelte'
+  import Search from '../components/Search.svelte'
   import episodeFilter from '$lib/episodeFilter'
   export let data;
 
 
-  let timer;
   let searchTerm = data.searchString || '';
   let podcastJSON
 
@@ -18,41 +18,14 @@
       })
   })
 
-
   $: filteredEpisodes = episodeFilter(podcastJSON, searchTerm);
-
-  const debounce = value => {
-		clearTimeout(timer);
-		timer = setTimeout(() => {
-      updateSearchterm(value)
-		}, 300);
-	}
-
-  function updateSearchterm (value) {
-    searchTerm = value;
-    const url = new URL(window.location);
-
-    if (value) {
-      url.searchParams.set('s', searchTerm);
-    } else {
-      url.searchParams.delete('s');
-    }
-    window.history.pushState({}, '', url);
-  }
 </script>
 
 <header>
   <h1>MR4 rádió</h1>
 </header>
 <main>
-  <input
-    type="search"
-    name="search"
-    id="search"
-    value="{data.searchString}"
-    on:search={({ target: { value } }) => debounce(value)}
-    on:keyup={({ target: { value } }) => debounce(value) }
-  >
+  <Search searchString={data.searchString} on:change={event => searchTerm = event.detail} />
   {#each filteredEpisodes as show}
     <Show {...show} />
   {/each}

@@ -1,13 +1,17 @@
 export default function episodeFilter(shows, searchTerm) {
+  if(!searchTerm) {
+    return shows;
+  }
+
   const filtered = shows
     .filter((episode) =>
-      normailezeString(JSON.stringify(episode)).includes(normailezeString(searchTerm)
+      normalizeString(JSON.stringify(episode)).includes(normalizeString(searchTerm)
     ));
 
   return filtered;
 }
 
-function normailezeString(str) {
+function normalizeString(str) {
   return str.length
     ? str
         .normalize('NFD')
