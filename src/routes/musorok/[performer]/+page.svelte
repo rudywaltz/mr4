@@ -22,14 +22,19 @@
   $: filteredEpisodes = episodeFilter(episodes, searchTerm);
 </script>
 
+<svelte:head>
+	<title>{podcastInfo.title}</title>
+</svelte:head>
+
+
 <section>
   <img src={podcastInfo.logoUrl} alt="" width="100" height="100" />
-  <div>
+  <header>
     <h1>{podcastInfo.title}</h1>
     <div>
       {podcastInfo.description}
     </div>
-  </div>
+  </header>
 </section>
 
 <Search searchString={data.searchString} on:change={(event) => (searchTerm = event.detail)} />

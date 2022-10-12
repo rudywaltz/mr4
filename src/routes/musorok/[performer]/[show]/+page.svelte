@@ -12,4 +12,9 @@
   });
 </script>
 
+<svelte:head>
+	<title>{actualShow.title}</title>
+</svelte:head>
+
+
 <Show {...actualShow} />

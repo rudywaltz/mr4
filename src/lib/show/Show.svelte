@@ -21,15 +21,13 @@
   <header>
     <h2><a href="/musorok/{slug}/{normalizeString(title)}">{title}</a></h2>
     {#if subtitle}<h3>{subtitle}</h3>{/if}
-  </header>
-  <datetime
-    >{new Date(publishDate).toLocaleDateString('hu-HU', {
+    <datetime date={publishDate}>{new Date(publishDate).toLocaleDateString('hu-HU', {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    })}</datetime
-  >
+    })}</datetime>
+  </header>
   {duration}
 
   <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>
