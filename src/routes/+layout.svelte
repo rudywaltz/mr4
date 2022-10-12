@@ -1,6 +1,7 @@
 <script>
-  import Nav from '$lib/nav/Nav.svelte'
+  import Nav from '$lib/nav/Nav.svelte';
 </script>
+
 <Nav />
 
-<slot></slot>
+<slot />

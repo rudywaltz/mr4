@@ -1,6 +1,6 @@
 <script>
   import { podcast, podcastData } from '$lib/store';
-	import Search from '$lib/search/Search.svelte';
+  import Search from '$lib/search/Search.svelte';
   import Show from '$lib/show/Show.svelte';
   import episodeFilter from '$lib/episodeFilter';
 
@@ -11,33 +11,29 @@
   let searchTerm = '';
 
   $: {
-    podcast.subscribe(podcast => {
-      episodes = podcast[data.performer]
+    podcast.subscribe((podcast) => {
+      episodes = podcast[data.performer];
     });
 
-      podcastData.subscribe(podcast => {
-      podcastInfo = podcast[data.performer]
+    podcastData.subscribe((podcast) => {
+      podcastInfo = podcast[data.performer];
     });
-
   }
   $: filteredEpisodes = episodeFilter(episodes, searchTerm);
-
-
 </script>
-  <section>
-      <img src="{podcastInfo.logoUrl}" alt="" width="100" height="100">
+
+<section>
+  <img src={podcastInfo.logoUrl} alt="" width="100" height="100" />
+  <div>
+    <h1>{podcastInfo.title}</h1>
     <div>
-      <h1>{podcastInfo.title}</h1>
-      <div>
-        {podcastInfo.description}
-      </div>
+      {podcastInfo.description}
     </div>
-  </section>
+  </div>
+</section>
 
-
-
-<Search searchString={data.searchString} on:change={event => searchTerm = event.detail} />
+<Search searchString={data.searchString} on:change={(event) => (searchTerm = event.detail)} />
 
 {#each filteredEpisodes as show}
-<Show {...show} />
+  <Show {...show} />
 {/each}

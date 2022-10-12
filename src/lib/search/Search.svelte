@@ -1,22 +1,22 @@
 <script>
   import { createEventDispatcher } from 'svelte';
 
-  export let searchString
+  export let searchString;
 
   const dispatch = createEventDispatcher();
   let searchTerm = searchString || '';
   let timer;
 
-  const debounce = value => {
-		clearTimeout(timer);
-		timer = setTimeout(() => {
-      updateSearchterm(value)
-		}, 300);
-	}
+  const debounce = (value) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      updateSearchterm(value);
+    }, 300);
+  };
 
-  function updateSearchterm (value) {
+  function updateSearchterm(value) {
     searchTerm = value;
-    dispatch('change', value)
+    dispatch('change', value);
     const url = new URL(window.location);
 
     if (value) {
@@ -26,14 +26,13 @@
     }
     window.history.pushState({}, '', url);
   }
-
 </script>
 
 <input
   type="search"
   name="search"
   id="search"
-  value="{searchString}"
+  value={searchString}
   on:search={({ target: { value } }) => debounce(value)}
-  on:keyup={({ target: { value } }) => debounce(value) }
->
+  on:keyup={({ target: { value } }) => debounce(value)}
+/>

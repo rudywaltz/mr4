@@ -3,17 +3,17 @@ function imageURLFix(imageURL) {
 }
 
 export default async function podcastFormatter(data, slug) {
-	if (!data.ok) {
-	  return {};
-	}
+  if (!data.ok) {
+    return {};
+  }
 
-	const podcastFeed = await data.text();
+  const podcastFeed = await data.text();
   const podcastJSON = JSON.parse(podcastFeed)[0];
-	podcastJSON.logoUrl = imageURLFix(podcastJSON.logoUrl);
+  podcastJSON.logoUrl = imageURLFix(podcastJSON.logoUrl);
   podcastJSON.shows = podcastJSON.shows.map((show) => {
     show.image = imageURLFix(show.image);
     show.slug = slug;
     return show;
-	});
-return podcastJSON;
+  });
+  return podcastJSON;
 }

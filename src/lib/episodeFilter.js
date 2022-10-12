@@ -1,12 +1,11 @@
 export default function episodeFilter(shows, searchTerm) {
-  if(!searchTerm) {
+  if (!searchTerm) {
     return shows;
   }
 
-  const filtered = shows
-    .filter((episode) =>
-      normalizeString(JSON.stringify(episode)).includes(normalizeString(searchTerm)
-    ));
+  const filtered = shows.filter((episode) =>
+    normalizeString(JSON.stringify(episode)).includes(normalizeString(searchTerm))
+  );
 
   return filtered;
 }
