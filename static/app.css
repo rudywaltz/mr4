@@ -21,6 +21,7 @@ html {
  */
 
 body {
+  font-size: 20px;
   margin: 0;
 }
 
@@ -327,4 +328,12 @@ template {
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+
+:root {
+  --navigation-bg-color: #c5b800;
+  --navigation-hover-color: #ab9f01;
+  --navigation-text-color: #000;
+  --navigation-outline-color: #000;
 }

@@ -4,4 +4,14 @@
 
 <Nav />
 
-<slot />
+<div class="container">
+  <slot />
+</div>
+
+
+<style>
+  .container {
+    max-width: 80ch;
+    margin-inline: auto;
+  }
+</style>
