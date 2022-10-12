@@ -1,7 +1,7 @@
 <script>
   import { podcast } from '$lib/store';
   import normalizeString from '$lib/normalizeString.js'
-  import Show from '../../../../components/show.svelte'
+  import Show from '$lib/show/Show.svelte'
 
   export let data;
 

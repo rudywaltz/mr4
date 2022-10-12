@@ -1,7 +1,7 @@
 <script>
   import { podcast, podcastData } from '$lib/store';
-	import Search from '../../../components/Search.svelte';
-  import Show from '../../../components/show.svelte';
+	import Search from '$lib/search/Search.svelte';
+  import Show from '$lib/show/Show.svelte';
   import episodeFilter from '$lib/episodeFilter';
 
   export let data;

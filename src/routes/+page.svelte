@@ -1,7 +1,7 @@
 <script>
   import { podcast } from '$lib/store';
-  import Show from '../components/show.svelte'
-  import Search from '../components/Search.svelte'
+  import Show from '$lib/show/Show.svelte'
+  import Search from '$lib/search/Search.svelte'
   import episodeFilter from '$lib/episodeFilter'
   export let data;
 
@@ -28,5 +28,8 @@
   <Search searchString={data.searchString} on:change={event => searchTerm = event.detail} />
   {#each filteredEpisodes as show}
     <Show {...show} />
+
+    {:else}
+    <h3>Nincs ilyen adás</h3>
   {/each}
 </main>
