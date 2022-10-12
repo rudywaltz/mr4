@@ -22,7 +22,7 @@
     <h2><a href="/musorok/{slug}/{normalizeString(title)}">{title}</a></h2>
     {#if subtitle}<h3>{subtitle}</h3>{/if}
     <div>
-      <time datetime={publishDate}
+      <time datetime={new Date(publishDate).toISOString()}
         >{new Date(publishDate).toLocaleDateString('hu-HU', {
           weekday: 'long',
           year: 'numeric',
@@ -36,7 +36,7 @@
 
   <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>
   <a href={url}>{title}</a>
-  <section>
+  <div>
     {@html description}
-  </section>
+</div>
 </article>
