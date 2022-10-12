@@ -8,7 +8,6 @@
   <slot />
 </div>
 
-
 <style>
   .container {
     max-width: 80ch;

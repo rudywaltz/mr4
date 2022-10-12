@@ -21,10 +21,9 @@
     />
   </a>
   {#each slugs as slug}
-    <a
-      href="/musorok/{slug}"
-      class:active={$page.url.pathname === `/musorok/${slug}`}
-    >{podcasts[slug].title}</a>
+    <a href="/musorok/{slug}" class:active={$page.url.pathname === `/musorok/${slug}`}
+      >{podcasts[slug].title}</a
+    >
   {/each}
 </nav>
 
@@ -44,7 +43,7 @@
     font-size: 24px;
     font-weight: bold;
     padding: 16px;
-    transition: background-color .2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     text-decoration: none;
   }
 
@@ -62,10 +61,8 @@
     outline-offset: 3px;
   }
 
-
   a:has(img) {
     padding: 0;
     font-size: 0;
   }
-
 </style>

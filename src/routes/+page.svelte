@@ -20,10 +20,9 @@
 </script>
 
 <svelte:head>
-	<title>MR4 Rádió</title>
-	<meta name="description" content="MR4 mxlr csatorna honlapja">
+  <title>MR4 Rádió</title>
+  <meta name="description" content="MR4 mxlr csatorna honlapja" />
 </svelte:head>
-
 
 <header>
   <h1>MR4 rádió</h1>

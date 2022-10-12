@@ -23,19 +23,16 @@
 </script>
 
 <svelte:head>
-	<title>{podcastInfo.title}</title>
+  <title>{podcastInfo.title}</title>
 </svelte:head>
 
-
-<section>
-  <img src={podcastInfo.logoUrl} alt="" width="100" height="100" />
-  <header>
-    <h1>{podcastInfo.title}</h1>
-    <div>
-      {podcastInfo.description}
-    </div>
-  </header>
-</section>
+<img src={podcastInfo.logoUrl} alt="" width="100" height="100" />
+<header>
+  <h1>{podcastInfo.title}</h1>
+  <div>
+    {podcastInfo.description}
+  </div>
+</header>
 
 <Search searchString={data.searchString} on:change={(event) => (searchTerm = event.detail)} />
 
