@@ -40,3 +40,12 @@
     {@html description}
 </div>
 </article>
+
+
+<style>
+  article {
+    border-bottom: 1px solid #000;
+    margin-block-end: 32px;
+    padding-block-end: 16px;
+  }
+</style>

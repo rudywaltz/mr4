@@ -32,6 +32,7 @@
     align-items: center;
     background-color: var(--navigation-bg-color);
     display: flex;
+    flex-wrap: wrap;
     margin-bottom: 32px;
     padding: 16px;
     gap: 32px;
