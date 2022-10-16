@@ -28,11 +28,29 @@
   }
 </script>
 
-<input
+<div class="box">
+  <label for="search">Keresés a műsorok között</label>
+  <input
   type="search"
   name="search"
   id="search"
   value={searchString}
   on:search={({ target: { value } }) => debounce(value)}
   on:keyup={({ target: { value } }) => debounce(value)}
-/>
+  />
+</div>
+
+
+<style>
+  .box {
+    background: #eee;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block: 16px;
+  }
+  input {
+    padding: 8px;
+  }
+</style>

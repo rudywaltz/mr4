@@ -33,9 +33,10 @@
     background-color: var(--navigation-bg-color);
     display: flex;
     flex-wrap: wrap;
+    gap: 32px;
+    justify-content: center;
     margin-bottom: 32px;
     padding: 16px;
-    gap: 32px;
   }
 
   a {
