@@ -18,7 +18,6 @@
 
         intersecting = entries[0].isIntersecting;
         if (intersecting && once) {
-          console.log('here')
           observer.unobserve(container);
         }
       }, {
