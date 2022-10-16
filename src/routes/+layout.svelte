@@ -10,7 +10,7 @@
 
 <style>
   .container {
-    max-width: 80ch;
+    /* max-width: 80ch; */
     margin-inline: auto;
     padding: 16px 8px;
     overflow-wrap: break-word;

@@ -1,4 +1,5 @@
 <script>
+  import ImageLoader from '$lib/image/ImageLoader.svelte';
   import extractSlug from '$lib/extractSlug.js';
   import normalizeString from '$lib/normalizeString.js';
 
@@ -18,11 +19,12 @@
 </script>
 
 <article>
-  <header>
-    <h2><a href="/musorok/{slug}/{normalizeString(title)}">{title}</a></h2>
-    {#if subtitle}<h3>{subtitle}</h3>{/if}
-    <div>
-      <time datetime={new Date(publishDate).toISOString()}
+  <div class="content-wrapper">
+    <header>
+      <h2><a href="/musorok/{slug}/{normalizeString(title)}">{title}</a></h2>
+      {#if subtitle}<h3>{subtitle}</h3>{/if}
+      <div>
+        <time datetime={new Date(publishDate).toISOString()}
         >{new Date(publishDate).toLocaleDateString('hu-HU', {
           weekday: 'long',
           year: 'numeric',
@@ -32,20 +34,40 @@
       >
     </div>
   </header>
-  {duration}
-
-  <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>
-  <a href={url}>{title}</a>
   <div>
     {@html description}
+  </div>
+  <footer>
+    {duration}
+    <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>&nbsp;|&nbsp;
+    <a href={url}>{title}</a>
+  </footer>
+</div>
+<div class="image-wrapper">
+  <ImageLoader src={image}></ImageLoader>
 </div>
 </article>
 
 
 <style>
   article {
+    display: flex;
     border-bottom: 1px solid #000;
     margin-block-end: 32px;
-    padding-block-end: 16px;
+    padding-block-end: 24px;
+  }
+
+  .content-wrapper {
+    flex-basis: 100%;;
+  }
+
+  .image-wrapper {
+    flex-shrink: 0;
+    margin-inline-start: 16px;
+    width: min(300px, 100%);
+  }
+
+  footer {
+    margin-block-start: 16px;
   }
 </style>
