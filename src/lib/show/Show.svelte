@@ -55,6 +55,7 @@
     border-bottom: 1px solid #000;
     margin-block-end: 32px;
     padding-block-end: 24px;
+    overflow-wrap: break-word;
   }
 
   .content-wrapper {
@@ -70,4 +71,16 @@
   footer {
     margin-block-start: 16px;
   }
+
+
+  @media screen and (max-width: 500px) {
+    article {
+      display: block;
+    }
+
+    .image-wrapper {
+      margin-block-start: 16px;
+    }
+  }
+
 </style>
