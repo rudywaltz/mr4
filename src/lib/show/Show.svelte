@@ -25,29 +25,28 @@
       {#if subtitle}<h3>{subtitle}</h3>{/if}
       <div>
         <time datetime={new Date(publishDate).toISOString()}
-        >{new Date(publishDate).toLocaleDateString('hu-HU', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        })}</time
-      >
+          >{new Date(publishDate).toLocaleDateString('hu-HU', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}</time
+        >
+      </div>
+    </header>
+    <div>
+      {@html description}
     </div>
-  </header>
-  <div>
-    {@html description}
+    <footer>
+      {duration}
+      <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>&nbsp;|&nbsp;
+      <a href={url}>{title}</a>
+    </footer>
   </div>
-  <footer>
-    {duration}
-    <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>&nbsp;|&nbsp;
-    <a href={url}>{title}</a>
-  </footer>
-</div>
-<div class="image-wrapper">
-  <ImageLoader src={image}></ImageLoader>
-</div>
+  <div class="image-wrapper">
+    <ImageLoader src={image} />
+  </div>
 </article>
-
 
 <style>
   article {
@@ -59,7 +58,7 @@
   }
 
   .content-wrapper {
-    flex-basis: 100%;;
+    flex-basis: 100%;
   }
 
   .image-wrapper {
@@ -72,7 +71,6 @@
     margin-block-start: 16px;
   }
 
-
   @media screen and (max-width: 500px) {
     article {
       display: block;
@@ -82,5 +80,4 @@
       margin-block-start: 16px;
     }
   }
-
 </style>

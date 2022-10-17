@@ -31,15 +31,14 @@
 <div class="box">
   <label for="search">Keresés a műsorok között</label>
   <input
-  type="search"
-  name="search"
-  id="search"
-  value={searchString}
-  on:search={({ target: { value } }) => debounce(value)}
-  on:keyup={({ target: { value } }) => debounce(value)}
+    type="search"
+    name="search"
+    id="search"
+    value={searchString}
+    on:search={({ target: { value } }) => debounce(value)}
+    on:keyup={({ target: { value } }) => debounce(value)}
   />
 </div>
-
 
 <style>
   .box {
