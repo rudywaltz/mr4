@@ -40,7 +40,7 @@
     <footer>
       {duration}
       <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>&nbsp;|&nbsp;
-      <a href={url}>{title}</a>
+      <a href={url}>{title} (letöltés)</a>
     </footer>
   </div>
   <div class="image-wrapper">
