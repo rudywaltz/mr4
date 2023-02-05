@@ -3,7 +3,7 @@
   import extractSlug from '$lib/extractSlug.js';
   import normalizeString from '$lib/normalizeString.js';
 
-  export let title, subtitle, description, duration, image, publishDate, url, slug;
+  export let title, subtitle, description, duration, image, publishDate, downloadUrl, slug;
 
   function pad(num) {
     return String(num).padStart(2, '0');
@@ -38,9 +38,9 @@
       {@html description}
     </div>
     <footer>
-      {duration}
+      {format(duration)}
       <a href="/musorok/{slug}"><strong>{extractSlug(slug)}</strong></a>&nbsp;|&nbsp;
-      <a href={url}>{title} (letöltés)</a>
+      <a href={downloadUrl} download="{normalizeString(title)}.mp3">{title} (letöltés)</a>
     </footer>
   </div>
   <div class="image-wrapper">
