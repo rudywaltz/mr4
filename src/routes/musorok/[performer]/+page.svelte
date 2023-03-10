@@ -36,6 +36,8 @@
 
 <Search searchString={data.searchString} on:change={(event) => (searchTerm = event.detail)} />
 
-{#each filteredEpisodes as show}
-  <Show {...show} />
-{/each}
+<div role="region" aria-live="polite" id="show-list">
+  {#each filteredEpisodes as show}
+    <Show {...show} />
+  {/each}
+</div>

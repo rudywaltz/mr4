@@ -31,6 +31,7 @@
 <div class="box">
   <label for="search">Keresés a műsorok között</label>
   <input
+    aria-controls="show-list"
     type="search"
     name="search"
     id="search"
